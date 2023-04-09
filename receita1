@@ -2,51 +2,44 @@ import 'package:flutter/material.dart';
 // import 'package:styled_text/styled_text.dart';
 
 void main() {
-
-    MaterialApp app = MaterialApp(
-
-      theme: ThemeData(primarySwatch: Colors.amber,
-      //brightness: Brightness.dark,
-      fontFamily: 'Castellar'), //Não tá funcionando
+  MaterialApp app = MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.amber,
+          //brightness: Brightness.dark,
+          textTheme: const TextTheme(
+              displayLarge:
+                  TextStyle(fontSize: 190.0, fontWeight: FontWeight.bold),
+              titleLarge: TextStyle(
+                  fontSize: 36.0,
+                  fontStyle: FontStyle.italic,
+                  fontFamily: 'Montserrat'),
+              bodyMedium: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat')),
+          scaffoldBackgroundColor: Colors.orange[100]),
 
       home: Scaffold(
-
         appBar: AppBar(title: Text("Meu app")),
-
         body: Center(
-          child: Row(
-            children: [
-              Text("Projetinho em Flutter... Uau"),
-              Text("No meio..."),
-              Text("Terminando..."),
-              Icon(Icons.stars, color: Colors.amber[500])
-            ])
-          ),
-
-     bottomNavigationBar: BottomNavigationBar(
-				currentIndex: 0,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: ("Minha conta")
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_basket),
-              label: ("Meus pedidos")
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              label: ("Favoritos")
-          ),
-        ],
-      ),
-  
+            child: Row(children: [
+          Text("Projetinho em Flutter...    ",
+              style: TextStyle(fontSize: 20, fontFamily: 'Montserrat')),
+          Text("No meio...    ",
+              style: TextStyle(fontSize: 15, fontFamily: 'Arial')),
+          Text("Terminando...    ",
+              style: TextStyle(fontSize: 10, fontFamily: 'Castellar')),
+          Icon(Icons.stars, color: Colors.amber[500])
+        ])),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: ("Minha conta")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket), label: ("Meus pedidos")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: ("Favoritos")),
+          ],
+        ),
       ));
-  
+
   runApp(app);
-
-
 }
-
-
-
