@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+void main() {
+  MaterialApp app = MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.amber,
+          //brightness: Brightness.dark,
+          textTheme: const TextTheme(
+              displayLarge:
+                  TextStyle(fontSize: 190.0, fontWeight: FontWeight.bold),
+              titleLarge: TextStyle(
+                  fontSize: 36.0,
+                  fontStyle: FontStyle.italic,
+                  fontFamily: 'Montserrat'),
+              bodyMedium: TextStyle(fontSize: 20.0, fontFamily: 'Montserrat')),
+          scaffoldBackgroundColor: Colors.orange[100]),
+      home: Scaffold(
+        appBar: AppBar(title: Text("Cervejas")),
+        body: SingleChildScrollView(
+            child: DataTable(
+          headingTextStyle: TextStyle(
+              fontFamily: GoogleFonts.robotoMono().fontFamily,
+              fontWeight: FontWeight.bold,
+              fontSize: 20),
+          columns: const <DataColumn>[
+            DataColumn(label: Text("Nome")),
+            DataColumn(label: Text("Estilo")),
+            DataColumn(label: Text("IBU")),
+          ],
+          rows: const <DataRow>[
+            DataRow(cells: <DataCell>[
+              DataCell(Text("La Fin Du Monde")),
+              DataCell(Text("Bock")),
+              DataCell(Text("65")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Sapporo Premium")),
+              DataCell(Text("Sour Ale")),
+              DataCell(Text("54")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Duvel")),
+              DataCell(Text("Pilsner")),
+              DataCell(Text("82")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Itaipava")),
+              DataCell(Text("Bock")),
+              DataCell(Text("4")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Lokal")),
+              DataCell(Text("Bock")),
+              DataCell(Text("5")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Sol")),
+              DataCell(Text("Latinha")),
+              DataCell(Text("6")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Skol")),
+              DataCell(Text("Long Neck")),
+              DataCell(Text("7")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Schin")),
+              DataCell(Text("Latinha")),
+              DataCell(Text("8")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Heineken")),
+              DataCell(Text("Long Neck")),
+              DataCell(Text("56")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Corona")),
+              DataCell(Text("Long Neck")),
+              DataCell(Text("23")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Bohemia")),
+              DataCell(Text("Ambev")),
+              DataCell(Text("45")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Bohemia Pilsen")),
+              DataCell(Text("Beer")),
+              DataCell(Text("56")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Bohemia Unfiltered")),
+              DataCell(Text("Ambev Corporation")),
+              DataCell(Text("13")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("La Fin Du Monde")),
+              DataCell(Text("Bock")),
+              DataCell(Text("23")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Bohemia Chopp")),
+              DataCell(Text("Cold")),
+              DataCell(Text("66")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("Heineken Chopp")),
+              DataCell(Text("AmBeV")),
+              DataCell(Text("10")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("La Fin Du Monde")),
+              DataCell(Text("Last")),
+              DataCell(Text("17")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("The Last of Us")),
+              DataCell(Text("Ambev")),
+              DataCell(Text("12")),
+            ]),
+            DataRow(cells: <DataCell>[
+              DataCell(Text("The End of The World")),
+              DataCell(Text("Fast")),
+              DataCell(Text("54")),
+            ]),
+          ],
+        )),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.person), label: ("Minha conta")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_basket), label: ("Meus pedidos")),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.favorite), label: ("Favoritos")),
+          ],
+        ),
+      ));
+
+  runApp(app);
+}
