@@ -16,6 +16,14 @@ class BottomItens extends StatelessWidget {
   }}
 
 
+class NewAppBar extends StatelessWidget implements PreferredSizeWidget{
+  NewAppBar();
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Widget build(BuildContext context){
+    return AppBar(title: const Text("Dicas"));
+  }
+} 
 class NewBody extends StatelessWidget {
   NewBody();
   @override
@@ -37,8 +45,8 @@ void main() {
    MaterialApp app = MaterialApp(
       theme: ThemeData(primarySwatch: Colors.deepPurple),
 home: Scaffold(
-        appBar: AppBar(title: const Text("Dicas")),
-        body: (NewBody()),
+        appBar: NewAppBar(),
+        body: NewBody(),
         bottomNavigationBar: BottomItens(),
       ));
   runApp(app);
