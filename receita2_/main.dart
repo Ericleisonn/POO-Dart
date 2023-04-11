@@ -40,14 +40,20 @@ class NewBody extends StatelessWidget {
           )
         ]);
   }}
-
-void main() {
-   MaterialApp app = MaterialApp(
+class MyApp extends StatelessWidget{
+  MyApp();
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.deepPurple),
 home: Scaffold(
         appBar: NewAppBar(),
         body: NewBody(),
         bottomNavigationBar: BottomItens(),
       ));
+  }
+}
+void main() {
+   MyApp app = MyApp();
   runApp(app);
 }
