@@ -45,6 +45,26 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
-        }
+        },
+        {
+            "name": "receita4",
+            "cwd": "receita4",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/receita4.dart"
+        },
+            {"name": "receita4 (profile mode)",
+            "cwd": "receita4",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "receita4 (release mode)",
+            "cwd": "receita4",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
     ]
 }
