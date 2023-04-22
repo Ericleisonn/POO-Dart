@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       debugShowCheckedModeBanner:false,
       home: Scaffold(
-        appBar: AppBar( 
-          title: const Text("Dicas"),),
+        appBar: NewAppBar(),
         body: DataBodyWidget(objects:const [
           "La Fin Du Monde - Bock - 65 ibu",
           "Sapporo Premiume - Sour Ale - 54 ibu",
@@ -38,6 +37,31 @@ class MyApp extends StatelessWidget {
 
   }
 
+}
+
+class NewAppBar extends StatelessWidget with PreferredSizeWidget {
+  NewAppBar();
+  Widget build(BuildContext context){
+    return AppBar(
+      title: const Text("Dicas"),
+      actions: [
+        PopupMenuButton(
+          itemBuilder: (context){
+            return const [
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text("Cinza")),
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text("Amarelo")),
+              PopupMenuItem<int>(
+                value: 0,
+                child: Text("Vermelho")),
+            ];
+})]);
+  }
+    @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
 
 class NewNavBar extends StatelessWidget {
