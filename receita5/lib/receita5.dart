@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_hooks/flutter_hooks.dart';
 var dataObjects = [];
+
+     // EXERCÍCIO 1 
+//  1. No print da classe HookWidget, as mudanças de estado de um botão para outra da bottomNavigationBar são contabilizadas no console, ou seja, em toda mudança de estado de qualquer classe, elas são contabilizadas.
 
 
 
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
-
+    print("no build da classe $MyApp");
     
 
     return MaterialApp(
@@ -46,9 +49,7 @@ class MyApp extends StatelessWidget {
 
 }
 
-
-
-class NewNavBar extends StatelessWidget {
+class NewNavBar extends HookWidget {
 
   NewNavBar();
 
@@ -63,11 +64,17 @@ class NewNavBar extends StatelessWidget {
 
 
   @override
-
+  
   Widget build(BuildContext context) {
+    print("no build da classe $HookWidget");
+     int n =1;
+    var state = useState(0);
+    
 
-    return BottomNavigationBar(onTap: buttonTapped, currentIndex: 1, items: const [
 
+
+    return BottomNavigationBar(onTap: (index){state.value = index;}, currentIndex: state.value, items: const [
+      
       BottomNavigationBarItem(
 
         label: "Cafés",
@@ -101,6 +108,7 @@ class DataTableWidget extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
+    print("no build da classe $DataTableWidget");
 
     
 
@@ -118,7 +126,7 @@ class DataTableWidget extends StatelessWidget {
 
                   label: Expanded(
 
-                    child: Text(name, style: TextStyle(fontStyle: FontStyle.italic))
+                    child: Text(name, style: const TextStyle(fontStyle: FontStyle.italic))
 
                   )
 
