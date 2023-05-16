@@ -18,6 +18,7 @@ class DataService extends ChangeNotifier{
   void carregar(index){
   var functionsNames = [carregarCafes,carregarCervejas,carregarNacoes];
     functionsNames[index]();
+
     }
     
 
