@@ -17,11 +17,7 @@ class DataService extends ChangeNotifier{
   
   void carregar(index){
   var functionsNames = [carregarCafes,carregarCervejas,carregarNacoes];
-  List propertyNames= [['name', 'flavor', 'price'],['name', 'style', 'ibu'],['name', 'language', 'president']];
-  List columnsNames = [['Nome', 'Sabor', 'Preço'],['Nome', 'Estilo', 'IBU'],['Nome', 'Linguagem', 'Presidente']];
     functionsNames[index]();
-    dataService.propertyNames =propertyNames[index]();
-    dataService.columnsNames= columnsNames[index]();
     }
     
 
