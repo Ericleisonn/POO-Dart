@@ -10,32 +10,33 @@ final ValueNotifier<List> tableStateNotifier =  ValueNotifier([]);
 class DataService extends ChangeNotifier{
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 
+
   List<String> columnsNames = [''];
   List<String> propertyNames = [''];
 
-
+  
   void carregar(index){
-    var counter$ = ValueNotifier(0);
-    if (index == 0){
-      columnsNames = ['Nome', 'Sabor', 'Preço'];
-      propertyNames = ['name', 'flavor', 'price'];
-      carregarCafes();
-      // print("Index == 0");
+  var functionsNames = [carregarCafes,carregarCervejas,carregarNacoes];
+  List propertyNames= [['name', 'flavor', 'price'],['name', 'style', 'ibu'],['name', 'language', 'president']];
+  List columnsNames = [['Nome', 'Sabor', 'Preço'],['Nome', 'Estilo', 'IBU'],['Nome', 'Linguagem', 'Presidente']];
+    functionsNames[index]();
+    dataService.propertyNames =propertyNames[index]();
+    dataService.columnsNames= columnsNames[index]();
     }
-    else if (index == 1){
-      columnsNames = ['Nome', 'Estilo', 'IBU'];
-      propertyNames = ['name', 'style', 'ibu'];
-      carregarCervejas();
-      // print("Index == 1");
+    
 
-      }
-    else if (index ==2){
-      columnsNames = ['Nome', 'Linguagem', 'Presidente'];
-      propertyNames = ['name', 'language', 'president'];
-      carregarNacoes();
-      // print("Index == 2");
-    }
-  }
+//   void carregar(index){
+//     var counter$ = ValueNotifier(0);
+//     if (index == 0){
+//       carregarCafes();
+//     }
+//     else if (index == 1){
+//       carregarCervejas();
+//       }
+//     else if (index ==2){
+//       carregarNacoes();
+//     }
+//   }
 
  void carregarCafes(){
     tableStateNotifier.value = [{
@@ -54,6 +55,8 @@ class DataService extends ChangeNotifier{
             "price": "50,50"
             }
           ];
+  columnsNames = ['Nome', 'Sabor', 'Preço'];
+  propertyNames = ['name', 'flavor', 'price'];
 
     }
  void carregarNacoes(){
@@ -73,6 +76,8 @@ class DataService extends ChangeNotifier{
             "president": "Vladimir Putin"
             }
           ];
+  propertyNames = ['name', 'language', 'president'];
+  columnsNames = ['Nome','Linguagem','Presidente'];
 }
   void carregarCervejas(){
     tableStateNotifier.value = [{
@@ -81,7 +86,7 @@ class DataService extends ChangeNotifier{
             "ibu": "65"
             },
             {
-            "name": "Sapporo Premiume",
+            "name": "Sapporo Premium",
             "style": "Sour Ale",
             "ibu": "54"
             },
@@ -91,7 +96,12 @@ class DataService extends ChangeNotifier{
             "ibu": "82"
             }
           ];
-}}
+
+  columnsNames = ['Nome', 'Estilo', 'IBU'];
+  propertyNames = ['name', 'style', 'ibu'];
+
+}
+}
 final dataService = DataService();
 
 
@@ -173,7 +183,7 @@ class NewNavBar extends HookWidget {
   @override
 
   Widget build(BuildContext context) {
-    var state = useState(1);
+    var state = useState(0);
     return BottomNavigationBar(
       onTap: (index){
         state.value = index;
@@ -230,7 +240,7 @@ class DataTableWidget extends StatelessWidget {
 
 
 
-  DataTableWidget( {this.jsonObjects = const [], this.columnNames = const [], this.propertyNames= const [],});
+  DataTableWidget( {this.jsonObjects = const [], this.columnNames = const ['Nome', 'Sabor', 'Preço'], this.propertyNames= const ['name', 'style', 'ibu'],});
 
 
 
