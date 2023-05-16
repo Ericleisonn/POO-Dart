@@ -3,44 +3,99 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 
-final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
-//var dataObjects = [];
+final ValueNotifier<List> twitter =  ValueNotifier([]);
+final ValueNotifier<List> tableStateNotifier =  ValueNotifier([]);
 
-void carregarCervejas(){
 
-  tableStateNotifier.value = [{
+class DataService extends ChangeNotifier{
+  final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
 
-          "name": "La Fin Du Monde",
+  List<String> columnsNames = [''];
+  List<String> propertyNames = [''];
 
-          "style": "Bock",
 
-          "ibu": "65"
+  void carregar(index){
+    var counter$ = ValueNotifier(0);
+    if (index == 0){
+      columnsNames = ['Nome', 'Sabor', 'Preço'];
+      propertyNames = ['name', 'flavor', 'price'];
+      carregarCafes();
+      // print("Index == 0");
+    }
+    else if (index == 1){
+      columnsNames = ['Nome', 'Estilo', 'IBU'];
+      propertyNames = ['name', 'style', 'ibu'];
+      carregarCervejas();
+      // print("Index == 1");
 
-          },
+      }
+    else if (index ==2){
+      columnsNames = ['Nome', 'Linguagem', 'Presidente'];
+      propertyNames = ['name', 'language', 'president'];
+      carregarNacoes();
+      // print("Index == 2");
+    }
+  }
 
-          {
+ void carregarCafes(){
+    tableStateNotifier.value = [{
+            "name": "Santa Clara",
+            "flavor": "Suave",
+            "price": "55,35"
+            },
+            {
+            "name": "Kimimo",
+            "flavor": "Amargo",
+            "price": "38,90"
+            },
+            {
+            "name": "Maratá", 
+            "flavor": "Intermediário", 
+            "price": "50,50"
+            }
+          ];
 
-          "name": "Sapporo Premiume",
-
-          "style": "Sour Ale",
-
-          "ibu": "54"
-
-          },
-
-          {
-
-          "name": "Duvel", 
-
-          "style": "Pilsner", 
-
-          "ibu": "82"
-
-          }
-
-        ];
-
+    }
+ void carregarNacoes(){
+    tableStateNotifier.value = [{
+            "name": "Brasil",
+            "language": "Português",
+            "president": "Leves"
+            },
+            {
+            "name": "China",
+            "language": "Chinese",
+            "president": "Xi Jinping"
+            },
+            {
+            "name": "Rússia", 
+            "language": "Russian ", 
+            "president": "Vladimir Putin"
+            }
+          ];
 }
+  void carregarCervejas(){
+    tableStateNotifier.value = [{
+            "name": "La Fin Du Monde",
+            "style": "Bock",
+            "ibu": "65"
+            },
+            {
+            "name": "Sapporo Premiume",
+            "style": "Sour Ale",
+            "ibu": "54"
+            },
+            {
+            "name": "Duvel", 
+            "style": "Pilsner", 
+            "ibu": "82"
+            }
+          ];
+}}
+final dataService = DataService();
+
+
+
 
 void main() {
 
@@ -53,8 +108,6 @@ void main() {
 
 
 class MyApp extends StatelessWidget {
-
-
 
   @override
 
@@ -74,19 +127,19 @@ class MyApp extends StatelessWidget {
 
           ),
 
-        body: ValueListenableBuilder(
+        body:ValueListenableBuilder(
 
-          valueListenable: tableStateNotifier,
+          valueListenable: dataService.tableStateNotifier,
 
           builder:(_, value, __){
 
             return DataTableWidget(
 
-              jsonObjects: value, 
+              jsonObjects:value, 
 
-              propertyNames: ["name","style","ibu"], 
+              propertyNames: dataService.propertyNames,
 
-              columnNames: ["Nome", "Estilo", "IBU"]
+              columnNames: dataService.columnsNames
 
             );
 
@@ -94,7 +147,7 @@ class MyApp extends StatelessWidget {
 
         ),
 
-        bottomNavigationBar: NewNavBar(),
+        bottomNavigationBar: NewNavBar(itemSelectedCallback: dataService.carregar),
 
       ));
 
@@ -106,56 +159,25 @@ class MyApp extends StatelessWidget {
 
 
 
-class NewNavBar extends HookWidget {
 
-  NewNavBar();
+
+class NewNavBar extends HookWidget {
+  var itemSelectedCallback;
+  // NewNavBar();
+  NewNavBar({this.itemSelectedCallback}){
+    itemSelectedCallback ??= (_){} ;
+  } 
 
 
 
   @override
 
   Widget build(BuildContext context) {
-
     var state = useState(1);
-
     return BottomNavigationBar(
-
       onTap: (index){
-
         state.value = index;
-
-        tableStateNotifier.value = [{
-
-          "name": "La Fin Du Monde",
-
-          "style": "Bock",
-
-          "ibu": "65"
-
-          },
-
-          {
-
-          "name": "Sapporo Premiume",
-
-          "style": "Sour Ale",
-
-          "ibu": "54"
-
-          },
-
-          {
-
-          "name": "Duvel", 
-
-          "style": "Pilsner", 
-
-          "ibu": "82"
-
-          }
-
-        ];
-
+        itemSelectedCallback(index); 
       }, 
 
       currentIndex: state.value,
@@ -189,6 +211,13 @@ class NewNavBar extends HookWidget {
 
 
 }
+
+
+
+
+
+
+
 class DataTableWidget extends StatelessWidget {
 
 
@@ -201,7 +230,7 @@ class DataTableWidget extends StatelessWidget {
 
 
 
-  DataTableWidget( {this.jsonObjects = const [], this.columnNames = const ["Nome","Estilo","IBU"], this.propertyNames= const ["name", "style", "ibu"]});
+  DataTableWidget( {this.jsonObjects = const [], this.columnNames = const [], this.propertyNames= const [],});
 
 
 
