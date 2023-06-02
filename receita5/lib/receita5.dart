@@ -172,8 +172,8 @@ class NewNavBar extends HookWidget {
   var itemSelectedCallback;
   // NewNavBar();
   NewNavBar({this.itemSelectedCallback}){
-    itemSelectedCallback ??= (_){} ;
-  } 
+    itemSelectedCallback??= (_){} ;
+  }  
 
 
 
