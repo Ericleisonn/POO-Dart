@@ -86,5 +86,25 @@
             "type": "dart",
             "flutterMode": "release"
         },
+        {
+            "name": "receita7",
+            "cwd": "receita7",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/receita7.dart"
+        },
+            {"name": "receita7 (profile mode)",
+            "cwd": "receita7",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "receita7 (release mode)",
+            "cwd": "receita7",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
     ]
 }
