@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
 
   }
 }
-class NewAppBar extends StatelessWidget with PreferredSizeWidget {
+class NewAppBar extends StatelessWidget implements PreferredSizeWidget {
   NewAppBar();
   Widget build(BuildContext context){
     return AppBar(
