@@ -298,11 +298,11 @@ class MyApp extends StatelessWidget {
 
               case TableStatus.idle: 
 
-                return Center(child: Text("Toque em algum botão"));
+                return const Center(child: Text("Toque em algum botão abaixo para carregar"));
 
               case TableStatus.loading:
 
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
 
               case TableStatus.ready: 
 
@@ -318,11 +318,11 @@ class MyApp extends StatelessWidget {
 
               case TableStatus.error: 
 
-                return Text("Lascou");
+                return const Text("Erro");
 
             }
 
-            return Text("...");
+            return const Text("...");
 
             
 
