@@ -125,6 +125,26 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
+        },
+        {
+            "name": "receita10c",
+            "cwd": "receita10c",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/receita10c.dart"
+        },
+            {"name": "receita10c (profile mode)",
+            "cwd": "receita10c",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "receita10c (release mode)",
+            "cwd": "receita10c",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
         }
     ]
 }
